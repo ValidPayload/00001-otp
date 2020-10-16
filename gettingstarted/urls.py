@@ -16,6 +16,6 @@ import hello.views
 
 urlpatterns = [
     path("", hello.views.index, name="index"),
-    path("db/", hello.views.db, name="db"),
+    path("verify-pin", hello.views.verify_pin, name="verify_pin"),
     path("admin/", admin.site.urls),
 ]

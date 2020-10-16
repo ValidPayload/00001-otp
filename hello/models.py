@@ -1,5 +1,6 @@
 from django.db import models
 
-# Create your models here.
-class Greeting(models.Model):
-    when = models.DateTimeField("date created", auto_now_add=True)
+class PIN(models.Model):
+	phone_number = models.CharField("phone number", max_length=5)
+	pin = models.CharField("pin", max_length=5)
+	valid_until = models.DateTimeField("date until pin is valid")

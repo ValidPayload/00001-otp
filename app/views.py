@@ -8,6 +8,7 @@ from .models import PIN
 from .forms import PhoneNumberForm, VerifyPINForm
 
 
+@csrf_exempt
 def index(request):
     if request.method == 'POST':
         form = PhoneNumberForm(request.POST)

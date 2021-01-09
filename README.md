@@ -12,6 +12,7 @@ $ source venv/bin/activate
 $ pip install -r requirements.local.txt
 
 $ python manage.py migrate
+$ python manage.py createsuperuser
 $ python manage.py runserver
 ```
 
@@ -24,6 +25,7 @@ $ heroku create
 $ git push heroku main
 
 $ heroku run python manage.py migrate
+$ heroku run python manage.py createsuperuser
 $ heroku open
 ```
 or

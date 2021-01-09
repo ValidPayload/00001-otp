@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 import datetime
@@ -8,7 +7,7 @@ import random
 from .models import PIN
 from .forms import PhoneNumberForm, VerifyPINForm
 
-# Create your views here.
+
 def index(request):
     if request.method == 'POST':
         form = PhoneNumberForm(request.POST)
@@ -36,6 +35,7 @@ def index(request):
         "index.html",
         {"form": PhoneNumberForm()}
     )
+
 
 @csrf_exempt
 @require_http_methods(["POST"])

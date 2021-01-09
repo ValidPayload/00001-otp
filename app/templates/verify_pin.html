@@ -9,7 +9,6 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4">
         <form action="/verify-pin" method="POST">
-          {% csrf_token %}
           <input type="hidden" name="phone_number" value="{{ phone_number }}">
 
           <div class="form-group text-left">

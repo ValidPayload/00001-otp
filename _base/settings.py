@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+PIN_LENGTH = int(os.getenv("OTP_LENGTH", "4"))
+
+# If True, PIN will be generated using urandom and zero-padder
+# Otherwise a naive randint(10000, 99999) will be used
+PIN_GEN_V2 = os.getenv("OTP_GEN_V2", "").lower() in ["true", "1", "yes"]
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

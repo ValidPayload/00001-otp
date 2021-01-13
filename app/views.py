@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
@@ -6,6 +7,10 @@ import random
 
 from .models import PIN
 from .forms import PhoneNumberForm, VerifyPINForm
+from .utils import (
+    gen_pin,
+    gen_pin_v2,
+)
 
 
 @csrf_exempt
@@ -14,10 +19,17 @@ def index(request):
         form = PhoneNumberForm(request.POST)
         form.is_valid()  # I don't care about invalid. It's just for a video
 
+        # Generate PIN
+        pin_len = settings.PIN_LENGTH
+        if settings.PIN_GEN_V2:
+            pin = gen_pin_v2(pin_len)
+        else:
+            pin = gen_pin()
+
         # Create a PIN
         PIN.objects.create(
             phone_number=form.cleaned_data["phone_number"],
-            pin="{}".format(random.randint(10000, 99999)),
+            pin=pin,
             valid_until=datetime.datetime.utcnow() + datetime.timedelta(minutes=10)
         )
 

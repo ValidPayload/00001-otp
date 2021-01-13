@@ -22,6 +22,7 @@ The app should now be running on [localhost:8000](http://localhost:8000/).
 
 ```sh
 $ heroku create
+$ heroku config:set DJANGO_SETTINGS_MODULE=_base.settings_heroku
 $ git push heroku main
 
 $ heroku run python manage.py migrate
